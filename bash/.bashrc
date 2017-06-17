@@ -16,7 +16,7 @@ alias l="ls -al"
 alias lt="ll --full-time -t"
 
 alias blog="bundle exec jekyll s"
-alias ..="cd .."
+alias ..="cd .. && ls"
 
 alias gg="git grep --color -n"
 alias gpr="git pull --rebase"
