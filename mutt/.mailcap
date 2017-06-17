@@ -1,0 +1,20 @@
+## Description: View the attachments of mutt.
+## Functions: (1) Convert *.doc to *.html by wvHtml;
+##            (2) Use w3m to read *.doc and *.html in Mutt;
+##            (3) Use xpdf to view *.pdf;
+##            (4) Use display to view images;
+##            (5) Use mplayer to enjoy the audio and video.
+##
+# Microsoft word
+application/msword; wvHtml %s - | w3m -dump; nametemplate=%s.html; copiousoutput
+# pdf
+application/pdf; xpdf %s > /dev/null
+# html
+text/html; w3m -dump -I %{charset} -T text/html %s; copiousoutput
+# image
+image/*; display %s; /dev/null
+application/octet-stream; xpdf %s; /dev/null
+# audio
+audio/*; mplayer %s > /dev/null
+# video
+video/*; mplayer %s > /dev/null

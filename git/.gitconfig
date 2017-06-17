@@ -1,0 +1,36 @@
+[user]
+	name =  Yilong Ren
+	email = yilong.ren@sky-data.cn
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg2 = log --color --graph --pretty=format:'%h %ad | %s%d [%an]' --abbrev-commit --date=short
+	sw = show --pretty=raw
+	sw2 = show --format=fuller --stat --patch -w -M
+	sw3 = show --format=fuller --stat --patch -w -M --word-diff-regex=.
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	unstage = reset HEAD
+	pf = pull --ff-only
+	type = cat-file -t
+	dump = cat-file -p
+[color]
+	ui = true
+	diff= true
+[format]
+	numbered = auto
+	signoff = true
+[push]
+	default = simple
+[diff]
+	renames = true 
+[sendemail]
+	smtpserver = smtp.sky-data.cn
+	smtpencryption = tls
+	smtpuser = yilong.ren@sky-data.cn
+	smtppass = xxx
+	to = yilong.ren@sky-data.cn
+	#cc = ci-developer@sky-data.cn
+	cc = skyaxe@sky-data.cn
+

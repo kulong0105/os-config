@@ -1,0 +1,33 @@
+ServerAliveInterval 60
+TCPKeepAlive=yes
+
+Host yl
+	User root
+	HostName 192.168.124.240
+
+Host cy
+	User yancy
+	HostName 192.168.50.92
+
+Host yh
+	User guyanhua
+	HostName 192.168.50.41
+
+Host nfs
+	User root
+	HostName 192.168.20.11
+
+Host git
+	User root
+	HostName 192.168.20.14
+
+Host inn-forward
+	User renyl
+	HostName bee.sh.intel.com
+	LocalForward localhost:6666 192.168.0.2:22
+
+Host kernel
+	HostName 221.226.56.213 
+	User renyl
+	Port 443
+	ProxyCommand connect-proxy -H 10.167.251.83:8080 %h 443

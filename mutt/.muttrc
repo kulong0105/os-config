@@ -1,0 +1,278 @@
+#
+# 全局设置
+#
+#set hostname = "xxx"   # localhost
+#set hidden_host        # 隐藏 host 细节
+#
+
+
+#
+# 信箱设置
+#
+# 建立信箱, 默认信箱是inbox, 所有新邮件都会被默认发送到inbox文件夹中
+# 告知mutt邮件的存放格式(format), maildir格式要求相关文件夹下必须有tmp, new, cur这3个子目录
+set mbox_type = maildir
+# 存放邮件的根目录, 在muttrc文件中用"+"或者"="表示
+set folder = "~/.mail"
+# 接收到的邮件默认存放的位置, 系统会自动创建该目录, 而其它的目录需要手动创建
+set spoolfile = "+inbox"
+# 从收件箱(inbox)保存的邮件存放位置
+set mbox = "+mbox"
+# 延迟发送(postpone)邮件的存放位置
+set postponed = "+postponed"
+# 已发送的邮件存放的位置
+set record = "+sent-`date +%Y-%m`"
+# cache，可以快速打开 mailboxes
+set header_cache = "+mutt_cache"
+# 临时目录
+set tmpdir = "+tmp"
+# 快捷键超时时间
+set timeout = 600
+
+
+#
+# 发信设置
+#
+# 设置发信人名称
+set realname = "Yilong Ren"
+# 设置邮件发送程序
+set sendmail = "/usr/bin/msmtp"
+# 默认的发信地址
+#set from = "yilong.ren@sky-data.cn"
+set from = "yilongx.ren@intel.com"
+# 在发送邮件时使用from域作为msmtp发送邮件的sender, 否则使用的是user@localhost
+set envelope_from = yes
+# mutt自动生成from地址
+set use_from = yes
+# 设置编辑时使用的编辑器
+set editor = "vim"
+# 设置签名
+set signature = "~/.mutt.signature"
+
+
+#
+# 收信快捷设置
+#
+#macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
+#macro pager P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
+
+macro index S "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
+macro index S "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
+macro index P "!getmail -n -r ~/.getmail/getmailrc_intel \r"
+macro pager P "!getmail -n -r ~/.getmail/getmailrc_intel \r"
+
+macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skydiscovery; umask 022; git am -s)"
+macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skydiscovery-cluster; umask 022; git am -s)"
+
+macro index,pager K "<pipe-entry>(cd /home/renyl/lkp/lkp-tests; umask 022; git am -s)"
+macro index,pager L "<pipe-entry>(cd /home/renyl/lkp/lkp-core; umask 022; git am -s)"
+
+# 设置app浏览附件
+set mailcap_path ="~/.mailcap"
+
+
+#
+# 邮件格式
+#
+#set index_format="| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | %s"
+set index_format = "| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | (%?l?%4l&%4c?:%X) | %s"
+set folder_format = "| %2C | %t %N | %8s | %d | %f"
+#Flag
+# " "(空): 表示这封邮件不是给你的, 也就是说 To: 和 Cc: Bcc: 都没有你的地址,
+#          很多转发的邮件, 未确认的邮件列表邮件, 垃圾邮件都有这个特征.
+# +: 表示你是收件人(To: 是你的地址之一), 而且是唯一的收件人.
+# T: 表示你是收件人(To: 包括了你的地址之一), 但是你不是唯一的收件人. 这是一封群体信件.
+# C: 表示你的地址出现在 CC:, 但是你不是唯一的被抄送的人.
+# F: 表示这封邮件是你发出去的.
+# L: 表示这是一封你已经加入的邮件列表寄来的.
+
+
+#
+# 多个账户切换
+#
+macro generic "<esc>1" ":set from=yilong.ren@sky-data.cn"
+macro generic "<esc>2" ":set from=kulong0105@sina.com"
+macro generic "<esc>3" ":set from=kulong0105@163.com"
+macro generic "<esc>4" ":set from=kulong0105@gmail.com"
+macro generic "<esc>5" ":set from=yilongx.ren@intel.com"
+
+
+#
+# 地址簿设置（可用table键)
+#
+set alias_file = "~/.mutt.alias"
+source $alias_file
+#set query_command="abook --mutt-query '%s'"
+#macro editor ";" \Ct
+
+
+#
+# 显示设置
+#
+# 按 "r" 回信时，直接进入编辑模式
+set fast_reply
+# 来新邮件时，蜂鸣
+set beep_new = yes
+# 允许编辑邮件头
+set edit_headers = yes
+# 设置终端显示时采用的字符集
+set charset = "utf-8"
+# 设置发送字符集, 根据linux内核邮件列表推荐设置
+set send_charset = "us-ascii:utf-8"
+# 回信时引用原文是否加入原文的邮件头
+set header = no
+# 将inbox中已读邮件自动移动到mbox文件夹中(ask-yes表示会询问, yes则直接移动)
+set move = no
+# 在信件内容窗口(pager)滚动到底部时, 不自动跳到下一封邮件
+set pager_stop
+# 自动显示html
+auto_view text/html
+# 告知mutt订阅的邮件列表,以便开启相关特性,便于阅读邮件列表
+set sort = threads
+set sort_aux = reverse-last-date-received
+set sort_browser = reverse-date
+
+subscribe linux-kernel@vger.kernel.org
+subscribe lkp@eclists.intel.com
+
+# 按日期由近及远排列
+#set sort=reverse-date-received
+#set sort_aux=score              # 按评分排序
+#score "~N" +4                   # 新信件 +4
+#score "~s 会议" +2              # 主题包含“会议” +2
+#score "~s 通知" +2              # 主题包含“通知” +2
+#score "~s meeting" +2           # 主题包含“meeting” +2
+#score "~D" -5                   # 已经标记删除的 -5
+#score "~O" +1                   # 上次没读的 +1
+
+
+#
+# Vim式键位映射, \c表示ctrl键
+#
+bind pager gg top
+bind pager G bottom
+bind pager j next-line
+bind pager k previous-line
+bind pager \cf next-page
+bind pager \cb previous-page
+bind pager \cj next-entry
+bind pager \ck previous-entry
+
+bind index gg first-entry
+bind index G last-entry
+bind index R group-reply
+bind index \cf next-page
+bind index \cb previous-page
+bind index } bottom-page
+bind index f change-folder
+bind index c forward-message
+
+
+#
+# basic colors -------------------------------------------------------
+#
+color normal        white           black
+color error         red             black
+color tilde         white           black
+color message       cyan            black
+color markers       red             black
+color attachment    brightred       black
+color search        brightmagenta   black
+color status        brightwhite     black
+color indicator     white           blue
+color tree          magenta         black   # arrows in threads
+
+
+#
+# 列表部分(高亮不同状态的邮件)------------------------------------------
+#
+color index         red             black         "~A"                        # all messages
+color index         brightred       black         "~E"                        # expired messages
+color index         brightcyan      black         "~N"                        # new messages
+color index         brightcyan      black         "~O"                        # old messages
+color index         brightmagenta   black         "~Q"                        # messages that have been replied to
+color index         white           black         "~R"                        # read messages
+color index         brightblue      black         "~U"                        # unread messages
+color index         brightblue      black         "~U~$"                      # unread, unreferenced messages
+color index         brightblue      black         "~v"                        # messages part of a collapsed thread
+color index         brightblue      black         "~P"                        # messages from me
+color index         cyan            black         "~p!~F"                     # messages to me
+color index         brightgreen     black         "~N~p!~F"                   # new messages to me
+color index         brightgreen     black         "~U~p!~F"                   # unread messages to me
+color index         green           black         "~R~p!~F"                   # messages to me
+color index         red             black         "~F"                        # flagged messages
+color index         red             black         "~F~p"                      # flagged messages to me
+color index         red             black         "~N~F"                      # new flagged messages
+color index         red             black         "~N~F~p"                    # new flagged messages to me
+color index         red             black         "~U~F~p"                    # new flagged messages to me
+color index         white           brightmagenta "~D"                        # deleted messages
+color index         white           black         "~v~(!~N!~O)"               # collapsed thread with no unread
+color index         magenta          black         "~v~(~N|~O)"               # collapsed thread with some unread
+color index         magenta           black         "~N~v~(~N)"               # collapsed thread with unread parent
+color index         red             white           "~v~(~F)!~N"              # collapsed thread with flagged, no unread
+color index         yellow          white           "~v~(~F~N)"               # collapsed thread with some unread & flagged
+color index         green           white           "~N~v~(~F~N)"             # collapsed thread with unread parent & flagged
+color index         green           white           "~N~v~(~F)"               # collapsed thread with unread parent, no unread inside, but some flagged
+color index         yellow          red             "~v~(~D)"                 # thread with deleted (doesn't differentiate between all or partial)
+
+
+#
+# 邮件内容页面邮件头部分高亮 ------------------------------------------
+#
+# color header        brightcyan      default         "^"
+color hdrdefault    brightblue      black
+color header        brightgreen     black         "^(From)"
+color header        brightyellow    black         "^(Subject)"
+
+
+#
+# 自定义的patch补丁高亮, 方便查看patch
+#
+color   body     red            black    "^-.*"
+color   body     green          black    "^[+].*"
+color   body     brightwhite    black    "^diff --git.*"
+color   body     brightwhite    black    "^index [a-f0-9].*"
+color   body     brightwhite    black    "^\-\-\- a.*"
+color   body     brightwhite    black    "^[\+]{3} b.*"
+color   body     brightyellow   black    "^@@.*"
+color   body     brightmagenta  black    "^(Signed-off-by).*"
+color   body     brightmagenta  black    "^(Reported-by).*"
+color   body     brightmagenta  black    "^(Suggested-by).*"
+color   body     brightmagenta  black    "^(Acked-by).*"
+color   body     brightmagenta  black    "^(Reviewed-by).*"
+color   body     brightmagenta  black    "^\-\-\-$"
+# color   body     brightmagenta  black    "^(Cc).*"
+# color   body     brightmagenta  black    "^(CC).*"
+color   body     white          black    "^( \#define).*"
+color   body     white          black    "^( \#include).*"
+color   body     white          black    "^( \#if).*"
+color   body     white          black    "^( \#el).*"
+color   body     white          black    "^( \#endif).*"
+
+
+#
+# optional highlightling
+#
+color   body    green           black    "LGTM"
+color   body    brightmagenta   black    "-- Commit Summary --"
+color   body    brightmagenta   black    "-- File Changes --"
+color   body    brightmagenta   black    "-- Patch Links --"
+color   body    green           black    "^Merged #.*"
+color   body    red             black    "^Closed #.*"
+color   body    brightblue      black    "^Reply to this email.*"
+
+#
+# 引文起始符号设置
+#
+# set quote_regexp = "^([ ]t]*[|>:}#])+"
+set quote_regexp = "^([ \t]*[>])+"
+
+#
+# 嵌套引文不同层的颜色
+#
+color quoted        blue            black
+color quoted1       magenta         black
+color quoted2       cyan            black
+color quoted3       yellow          black
+color quoted4       red             black
+

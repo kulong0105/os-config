@@ -1,0 +1,31 @@
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = pop3.gmail.com
+username = kulong0105@gmail.com
+password = xxx
+
+
+[destination]
+type = MultiDestination
+destinations = ("[procmail-as-renyl]", )
+
+# [destination]
+# 以Maildir格式储存
+# type = Maildir
+# path = ~/.mail/inbox/
+
+[procmail-as-renyl]
+type = MDA_external
+path = /usr/bin/procmail
+arguments = ('-m', '~/.procmailrc', '-f', '%(sender)')
+user = renyl
+
+
+[option]
+verbose=1
+# 默认为True, 每次执行getmail收取全部邮件, False表示只收取未收取过的邮件
+read_all = false
+# 本地删除服务器是否也删除邮件
+delete = false
+message_log_verbose = true
+message_log = ~/.getmail/getmail.log

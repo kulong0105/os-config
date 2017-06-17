@@ -1,0 +1,81 @@
+# procmail用于将收到的邮件进行分拣,并发放到不同的邮箱(文件夹)中
+# 设置PATH变量以便procmail正常运行,根据文档,PATH应在第一行就设置
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+# 指定shell
+SHELL = /bin/bash
+# 指定发信工具位置
+SENDMAIL=/usr/bin/msmtp
+# Mutt邮件存放主目录
+MAILDIR=/home/renyl/.mail
+# 默认存放的目录
+DEFAULT=$MAILDIR/inbox
+# 日志文件存放位置
+LOGFILE=$MAILDIR/procmail.log
+# 诊断用,关闭
+VERBOSE=no
+
+# 分拣规则, procmail采用名为recipe的规则来处理,具体查看man procmailrc
+# recipe的一般格式:
+#        :0 [flags] [ : [locallockfile] ]
+#        <zero or more conditions (one per line)>
+#        <exactly one action line>
+#
+# 其中, conditions行以'*'作为开头, '*'之后跟的正则表达式完全兼容egrep形式.
+# 关于规则示例可以查看man procmailex
+# action行中,可以以'!','|','{'开头,其中'|'开头之后可以跟一条bash命令,
+# 此外的任意符号被认为是邮箱文件夹, 可以采用绝对路径, 若使用相对路径,
+# 则是相对与$MAILDIR, 例如inbox/,表示$MAILDIR/inbox
+
+:0
+* ^To:.*yilong.ren@sky-data.cn
+inbox/
+
+:0
+* ^Cc:.*yilong.ren@sky-data.cn
+inbox/
+
+:0
+* ^To:.*kulong0105@sina.com
+sina/
+
+:0
+* ^Cc:.*kulong0105@sina.com
+sina/
+
+:0
+* ^To:.*kulong0105@163.com
+163/
+
+:0
+* ^Cc:.*kulong0105@163.com
+163/
+
+:0
+* ^To:.*kulong0105@gmail.com
+gmail/
+
+:0
+* ^Cc:.*kulong0105@gmail.com
+gmail/
+
+:0
+* ^To:.*yilongx.ren@intel.com
+intel/
+
+:0
+* ^Cc:.*yilongx.ren@intel.com
+intel/
+
+:0
+* ^To:.*linux-kernel@vger.kernel.org
+linux-kernel/
+
+:0
+* ^Cc:.*linux-kernel@vger.kernel.org
+linux-kernel/
+
+# 剩下的邮件存放至inbox目录中
+:0
+* .*
+inbox/
+
