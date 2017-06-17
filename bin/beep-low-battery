@@ -1,0 +1,31 @@
+#!/bin/bash
+
+[ -f /sys/class/power_supply/BAT0/status ] || exit
+[ -f /sys/class/power_supply/BAT0/energy_now ] || exit
+
+AC_online=$(</sys/class/power_supply/AC/online)
+
+status=$(</sys/class/power_supply/BAT0/status)
+energy_now=$(</sys/class/power_supply/BAT0/energy_now)
+energy_full=$(</sys/class/power_supply/BAT0/energy_full)
+remain=$((energy_now * 100 / energy_full))
+
+if [[ "$1" ]]; then
+	echo $remain
+fi
+
+if [[ $status == "Discharging" ]]; then
+	echo AC_online=$AC_online
+	echo BAT_status=$status
+	echo BAT_remain=$remain
+	# enable CONFIG_SND_HDA_INPUT_BEEP
+	# /usr/bin/beep -f 1000 -n -f 2000 -n -f 1500 -n -f1 -l 1000 -n -r $((remain/10)) -d 1000 -f 700
+	/usr/bin/mplayer /usr/share/sounds/error.wav >/dev/null 2>&1
+	sleep 1
+	/usr/bin/mplayer /usr/share/sounds/error.wav >/dev/null 2>&1
+	sleep 1
+	/usr/bin/mplayer /usr/share/sounds/error.wav >/dev/null 2>&1
+	sleep 1
+	[[ $remain -lt 30 ]] && /usr/bin/mplayer /usr/share/sounds/shutdown1.wav >/dev/null 2>&1 
+	[[ $remain -lt 20 ]] && sudo /sbin/halt
+fi

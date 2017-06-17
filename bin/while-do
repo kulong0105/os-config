@@ -1,0 +1,20 @@
+#!/bin/bash
+
+[ -z "$1" ] && echo "Usage: $0 command" 1>&2 && exit 1
+
+COMMAND="$1"
+REAL_COMMAND=`echo $COMMAND | awk '{ print $1 }'`
+
+which $REAL_COMMAND >&/dev/null || {
+	echo "$REAL_COMMAND: no such file" 1>&2
+	exit 1
+}
+
+[ -z $SLEEP ] && SLEEP=0.2
+
+clear
+while :; do
+	eval "$COMMAND"
+	sleep $SLEEP
+	clear
+done

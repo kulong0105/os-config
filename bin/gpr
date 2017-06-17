@@ -1,0 +1,19 @@
+#!/bin/bash
+# git-pull-rebase to origin/master
+
+git pull --ff-only && exit
+
+git rebase origin/master || {
+	if [[ $(git log -n1 origin/master..HEAD) ]]; then
+		echo git rebase -i HEAD~99
+	else
+		echo git reset --hard HEAD~99
+	fi
+	echo gpr
+	exit 1
+}
+
+if [[ $(git log -n1 origin/master..HEAD) ]]; then
+	echo
+	echo ./email origin/master..
+fi
