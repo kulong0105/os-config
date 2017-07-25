@@ -28,10 +28,16 @@ rpm -q tmux || sudo yum install -y tmux
 cp -f  $config_src/tmux/.tmux.conf  /home/renyl/.tmux.conf
 
 # config mutt
+rpm -q mutt || sudo yum install -y mutt
 rpm -q msmtp || sudo yum install -y msmtp
 rpm -q getmail || sudo yum install -y getmail
 rpm -q  procmail || sudo yum install -y procmail
 
 cp -a $config_src/mutt/*   /home/renyl/
+mkdir -p /home/renyl/.mail/inbox/{cur,tmp,new}
+mkdir -p /home/renyl/.mail/mbox/{cur,tmp,new}
+mkdir -p /home/renyl/.mail/postponed/{cur,tmp,new}
+mkdir -p /home/renyl/.mail/tmp/{cur,tmp,new}
+
 
 echo "=========completed==========="
