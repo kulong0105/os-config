@@ -19,6 +19,7 @@ type = MDA_external
 path = /usr/bin/procmail
 arguments = ('-m', '~/.procmailrc', '-f', '%(sender)')
 user = renyl
+allow_root_commands = True
 
 
 [option]
