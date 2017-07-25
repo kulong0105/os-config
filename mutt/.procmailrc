@@ -35,6 +35,22 @@ inbox/
 inbox/
 
 :0
+* ^From: kbuild test robot
+/dev/null
+
+:0
+* ^From:.*jira@sky-data.cn
+jira/
+
+:0
+* ^To:.*@sky-data.cn
+skydata/
+
+:0
+* ^Cc:.*@sky-data.cn
+skydata/
+
+:0
 * ^To:.*kulong0105@sina.com
 sina/
 
@@ -57,14 +73,6 @@ gmail/
 :0
 * ^Cc:.*kulong0105@gmail.com
 gmail/
-
-:0
-* ^To:.*yilongx.ren@intel.com
-intel/
-
-:0
-* ^Cc:.*yilongx.ren@intel.com
-intel/
 
 :0
 * ^To:.*linux-kernel@vger.kernel.org
