@@ -55,16 +55,15 @@ set signature = "~/.mutt.signature"
 #macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
 #macro pager P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
 
-macro index S "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
-macro index S "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
-macro index P "!getmail -n -r ~/.getmail/getmailrc_intel \r"
-macro pager P "!getmail -n -r ~/.getmail/getmailrc_intel \r"
+macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
+macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
 
-macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skydiscovery; umask 022; git am -s)"
-macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skydiscovery-cluster; umask 022; git am -s)"
+macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skydiscovery-standard; umask 022; git am -s)"
+macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skydiscovery-enterprise; umask 022; git am -s)"
+macro index,pager D "<pipe-entry>(cd /home/renyl/repo/fft_benchmark; umask 022; git am -s)"
 
-macro index,pager K "<pipe-entry>(cd /home/renyl/lkp/lkp-tests; umask 022; git am -s)"
-macro index,pager L "<pipe-entry>(cd /home/renyl/lkp/lkp-core; umask 022; git am -s)"
+macro index,pager K "<pipe-entry>(cd /home/renyl/repo/SkyAXE-deploy; umask 022; git am -s)"
+macro index,pager L "<pipe-entry>(cd /skydata/src; umask 022; git am -s)"
 
 # 设置app浏览附件
 set mailcap_path ="~/.mailcap"
@@ -127,9 +126,10 @@ set pager_stop
 # 自动显示html
 auto_view text/html
 # 告知mutt订阅的邮件列表,以便开启相关特性,便于阅读邮件列表
-set sort = threads
-set sort_aux = reverse-last-date-received
+set sort = reverse-threads
 set sort_browser = reverse-date
+#set sort = threads
+#set sort_aux = reverse-last-date-received
 
 subscribe linux-kernel@vger.kernel.org
 subscribe lkp@eclists.intel.com
