@@ -43,14 +43,6 @@ inbox/
 jira/
 
 :0
-* ^To:.*@sky-data.cn
-skydata/
-
-:0
-* ^Cc:.*@sky-data.cn
-skydata/
-
-:0
 * ^To:.*kulong0105@sina.com
 sina/
 
