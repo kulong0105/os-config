@@ -1,8 +1,16 @@
 [retriever]
 type = SimplePOP3SSLRetriever
-server = pop3.sky-data.cn
+server = mail.sky-data.cn
+port = 995
 username = yilong.ren@sky-data.cn
 password = xxx
+
+#type = SimpleIMAPSSLRetriever
+#server = mail.sky-data.cn
+#port = 993
+#username = yilong.ren@sky-data.cn
+#password = xxx
+#mailboxes = ALL
 
 
 [destination]
