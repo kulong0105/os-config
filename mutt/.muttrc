@@ -60,7 +60,7 @@ macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
 
 macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skydiscovery-standard; umask 022; git am -s)"
 macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skydiscovery-enterprise; umask 022; git am -s)"
-macro index,pager D "<pipe-entry>(cd /home/renyl/repo/fft_benchmark; umask 022; git am -s)"
+macro index,pager D "<pipe-entry>(cd /home/renyl/repo/benchmark; umask 022; git am -s)"
 
 macro index,pager K "<pipe-entry>(cd /home/renyl/repo/SkyAXE-deploy; umask 022; git am -s)"
 macro index,pager L "<pipe-entry>(cd /skydata/src; umask 022; git am -s)"
@@ -73,8 +73,12 @@ set mailcap_path ="~/.mailcap"
 # 邮件格式
 #
 #set index_format="| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | %s"
-set index_format = "| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | (%?l?%4l&%4c?:%X) | %s"
-set folder_format = "| %2C | %t %N | %8s | %d | %f"
+#set index_format = "| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | (%?l?%4l&%4c?:%X) | %s"
+#set folder_format = "| %2C | %t %N | %8s | %d | %f"
+
+set index_format = "| %4C | %Z | %{ %b %d } | %-15.15f %-15.15t | (%?l?%4l&%4c?:%X) | %s"
+set folder_format = "| %2C | %8s | %d | %f"
+
 #Flag
 # " "(空): 表示这封邮件不是给你的, 也就是说 To: 和 Cc: Bcc: 都没有你的地址,
 #          很多转发的邮件, 未确认的邮件列表邮件, 垃圾邮件都有这个特征.
@@ -128,8 +132,10 @@ auto_view text/html
 # 告知mutt订阅的邮件列表,以便开启相关特性,便于阅读邮件列表
 set sort = reverse-threads
 set sort_browser = reverse-date
+
 #set sort = threads
 #set sort_aux = reverse-last-date-received
+
 
 subscribe linux-kernel@vger.kernel.org
 subscribe lkp@eclists.intel.com
