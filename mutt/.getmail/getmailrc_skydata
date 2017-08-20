@@ -1,15 +1,19 @@
 [retriever]
-type = SimplePOP3SSLRetriever
+#type = SimplePOP3SSLRetriever
+#server = mail.sky-data.cn
+#port = 995
+#username = yilong.ren@sky-data.cn
+#password = xxx
+
+type = SimpleIMAPSSLRetriever
 server = mail.sky-data.cn
-port = 995
+port = 993
 username = yilong.ren@sky-data.cn
 password = xxx
 
-#type = SimpleIMAPSSLRetriever
-#server = mail.sky-data.cn
-#port = 993
-#username = yilong.ren@sky-data.cn
-#password = xxx
+# 不同服务器设置不同，可以通过在mutt查看原件的方式check
+mailboxes = ("INBOX", "INBOX/PATCH", "Sent")
+#mailboxes = ("INBOX", "INBOX.PATCH", "Sent")
 #mailboxes = ALL
 
 
