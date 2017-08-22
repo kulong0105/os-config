@@ -15,6 +15,7 @@
 	pf = pull --ff-only
 	type = cat-file -t
 	dump = cat-file -p
+	d = diff --stat -u
 [color]
 	ui = true
 	diff= true
@@ -24,13 +25,13 @@
 [push]
 	default = simple
 [diff]
-	renames = true 
+	renames = true
 [sendemail]
-	smtpserver = smtp.sky-data.cn
-	smtpencryption = tls
+	smtpserver = mail.sky-data.cn
 	smtpuser = yilong.ren@sky-data.cn
+	smtpencryption = tls
+	smtpserverport = 25
 	smtppass = xxx
 	to = yilong.ren@sky-data.cn
-	#cc = ci-developer@sky-data.cn
-	cc = skyaxe@sky-data.cn
-
+	cc = team_ci@sky-data.cn
+	#cc = skyaxe@sky-data.cn
