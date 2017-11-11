@@ -60,7 +60,7 @@ alias sc='sort | uniq -c | sort -nr | more'
 
 export PATH="/home/renyl/SkyDiscovery/bin/:/home/renyl/intel/intelpython3/bin/:$PATH"
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 # Avoid duplicates
 export HISTCONTROL=ignoredups:erasedups
