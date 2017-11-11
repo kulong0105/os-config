@@ -9,6 +9,9 @@
 #   renyl  2017/7/25   0.2v
 #   create email dir and add return value check
 
+#   renyl  2017/11/11   0.3v
+#   add autojump setting
+
 shopt -s dotglob
 
 config_src=$(dirname $(readlink -e -v $BASH_SOURCE))
@@ -43,5 +46,8 @@ mkdir -p /home/renyl/.mail/inbox/{cur,tmp,new} || exit
 mkdir -p /home/renyl/.mail/mbox/{cur,tmp,new} || exit
 mkdir -p /home/renyl/.mail/postponed/{cur,tmp,new} || exit
 mkdir -p /home/renyl/.mail/tmp/{cur,tmp,new} || exit
+
+# config autojump
+sudo yum install autojump || exit
 
 echo "=========completed==========="
