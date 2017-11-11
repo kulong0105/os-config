@@ -3,7 +3,7 @@
 #Program:
 #	config devlop env
 #History:
-#	renyl  2017/6/17   0.1v
+#   renyl  2017/6/17   0.1v
 #   initial version
 #
 #   renyl  2017/7/25   0.2v
@@ -17,11 +17,12 @@ config_src=$(dirname $(readlink -e -v $BASH_SOURCE))
 cp -f $config_src/bash/.bashrc /home/renyl/.bashrc || exit
 
 # config vim
-cp -f  $config_src/vim/vimrc   /etc/vimrc || exit
+sudo cp -f  $config_src/vim/vimrc   /etc/vimrc || exit
 mkdir -p /home/renyl/.vim
 cp -a  $config_src/vim/.vim/*  /home/renyl/.vim/ || exit
 
 # config ssh
+mkdir -p /home/renyl/.ssh
 cp -f  $config_src/ssh/config   /home/renyl/.ssh/config || exit
 
 # config git
