@@ -35,7 +35,7 @@ alias gc="git ci -m"
 alias gp="git push"
 alias gpf="git push -f"
 alias gf="git format"
-alias gm="git send-email"
+alias gsm="git send-email"
 
 alias t="tmux"
 alias tl="tmux ls"
