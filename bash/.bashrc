@@ -9,6 +9,7 @@ fi
 alias google-chrome_skydata="google-chrome --proxy-server=\"http://127.0.0.1:8118;https://127.0.0.1:8118\"" 
 
 alias c="clear"
+alias docker="sudo docker"
 alias v="vim"
 alias s="ssh"
 
@@ -54,11 +55,16 @@ alias gir='grep -E -Iir'
 alias gf='find . -type f -print0 | xargs -0 grep -E'
 alias gh='history 0 | grep -E'
 alias pss='processes=`ps aux`; echo "$processes" | head -n1; echo "$processes" |grep -E'
+alias psm='processes=`ps aux`; echo "$processes" | head -n1; echo "$processes" | sort -rnk 4 | head -20'
+alias psc='processes=`ps aux`; echo "$processes" | head -n1; echo "$processes" | sort -rnk 5 | head -20'
 
 alias sd='find -maxdepth 1 -print0 |xargs -0i du -ks {} |sort -rn |head -11 | cut -f2 | xargs -i du -hs {}'
 alias sc='sort | uniq -c | sort -nr | more'
 
-export PATH="/home/renyl/SkyDiscovery/bin/:/home/renyl/intel/intelpython3/bin/:$PATH"
+alias transc2e="trans zh-CN:en"
+alias transe2c="trans en:zh-CN"
+
+export PATH="/home/renyl/intel/intelpython3/bin/:$PATH"
 
 # eval $(thefuck --alias)
 
