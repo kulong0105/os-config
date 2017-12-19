@@ -51,4 +51,7 @@ mkdir -p /home/renyl/.mail/tmp/{cur,tmp,new} || exit
 # config autojump
 sudo yum install -y autojump || exit
 
+# config translate
+sudo yum install -y translate-shell || exit
+
 echo "=========completed==========="
