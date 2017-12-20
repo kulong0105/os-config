@@ -25,7 +25,7 @@ cp -f $config_src/bash/.bashrc /home/renyl/.bashrc || exit
 
 # config vim
 sudo yum install -y ctags || exit
-# sudo cp -f  $config_src/vim/vimrc   /etc/vimrc || exit
+sudo cp -f  $config_src/vim/vimrc   /home/renyl/.vimrc || exit
 mkdir -p /home/renyl/.vim
 cp -a  $config_src/vim/.vim/*  /home/renyl/.vim/ || exit
 
