@@ -5,12 +5,16 @@
 #History:
 #   renyl  2017/6/17   0.1v
 #   initial version
-#
+
 #   renyl  2017/7/25   0.2v
 #   create email dir and add return value check
 
 #   renyl  2017/11/11   0.3v
 #   add autojump setting
+
+#   renyl  2017/12/20   0.4v
+#   add translate setting
+
 
 shopt -s dotglob
 
@@ -21,7 +25,7 @@ cp -f $config_src/bash/.bashrc /home/renyl/.bashrc || exit
 
 # config vim
 sudo yum install -y ctags || exit
-sudo cp -f  $config_src/vim/vimrc   /etc/vimrc || exit
+# sudo cp -f  $config_src/vim/vimrc   /etc/vimrc || exit
 mkdir -p /home/renyl/.vim
 cp -a  $config_src/vim/.vim/*  /home/renyl/.vim/ || exit
 

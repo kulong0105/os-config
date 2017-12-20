@@ -70,6 +70,7 @@ set bg=dark
 colorscheme elflord
 set tabstop=4
 set shiftwidth=4
+"set expandtab
 set autoindent
 set smartindent 
 :source /home/renyl/.vim/abbreviation.vim
@@ -83,6 +84,7 @@ set encoding=utf-8
 set mouse=
 
 map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR> 
+nmap su :w !sudo tee %<CR>
 
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
