@@ -22,6 +22,7 @@ set mbox = "+mbox"
 set postponed = "+postponed"
 # 已发送的邮件存放的位置
 set record = "+sent-`date +%Y-%m`"
+#set record = "+inbox"
 # cache，可以快速打开 mailboxes
 set header_cache = "+mutt_cache"
 # 临时目录
@@ -49,6 +50,16 @@ set editor = "vim"
 set signature = "~/.mutt.signature"
 
 
+
+##  search  patterh
+#  ~b search in the messages body
+#  ~c search cc list field
+#  ~t search to list field
+#  ~f search from address field
+#  ~s search in subject field
+#  l  limit message
+#
+
 #
 # 收信快捷设置
 #
@@ -58,12 +69,13 @@ set signature = "~/.mutt.signature"
 macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
 macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata \r"
 
-macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skydiscovery-standard; umask 022; git am -s)"
-macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skydiscovery-enterprise; umask 022; git am -s)"
-macro index,pager D "<pipe-entry>(cd /home/renyl/repo/benchmark; umask 022; git am -s)"
+macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skycompute; umask 022; git am -s)"
+macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skycompute-enterprise; umask 022; git am -s)"
+macro index,pager D "<pipe-entry>(cd /home/renyl/repo/skycompute-benchmark; umask 022; git am -s)"
+macro index,pager E "<pipe-entry>(cd /home/renyl/repo/skydiscovery-benchmark; umask 022; git am -s)"
 
-macro index,pager K "<pipe-entry>(cd /home/renyl/repo/SkyAXE-deploy; umask 022; git am -s)"
-macro index,pager L "<pipe-entry>(cd /skydata/src; umask 022; git am -s)"
+macro index,pager K "<pipe-entry>(cd /home/renyl/repo/skydiscovery-deploy; umask 022; git am -s)"
+macro index,pager L "<pipe-entry>(cd /home/renyl/repo/cobbler-docker; umask 022; git am -s)"
 
 # 设置app浏览附件
 set mailcap_path ="~/.mailcap"
