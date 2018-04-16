@@ -37,6 +37,7 @@ alias gp="git push"
 alias gpf="git push -f"
 alias gf="git format"
 alias gsm="git send-email"
+alias gm="git ci --amend"
 
 alias t="tmux"
 alias tl="tmux ls"
@@ -45,6 +46,7 @@ alias m="mutt"
 
 alias net="systemctl restart NetworkManager.service"
 alias ipl="sudo iptables -L -n -v --line-numbers"
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias dg="dmesg| grep -Ei"
 alias grep='grep --color --exclude=cscope.out --exclude=tags'
