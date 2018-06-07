@@ -58,4 +58,8 @@ sudo yum install -y autojump || exit
 # config translate
 sudo yum install -y translate-shell || exit
 
+# config proxy
+sudo cp $config_src/tool/proxy/proxy /usr/bin/ || exit
+sudo cp $config_src/tool/proxy/proxy.sh /home/renyl/ || exit
+
 echo "=========completed==========="
