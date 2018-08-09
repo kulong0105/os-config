@@ -27,19 +27,15 @@ VERBOSE=no
 # 则是相对与$MAILDIR, 例如inbox/,表示$MAILDIR/inbox
 
 :0
-* ^To:.*yilong.ren@sky-data.cn
-inbox/
-
-:0
-* ^Cc:.*yilong.ren@sky-data.cn
-inbox/
-
-:0
 * ^From: kbuild test robot
 /dev/null
 
 :0
 * ^From:.*jira@sky-data.cn
+jira/
+
+:0
+* ^From:.*jira@iluvatar.ai
 jira/
 
 :0

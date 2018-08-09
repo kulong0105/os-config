@@ -2,13 +2,13 @@
 #type = SimplePOP3SSLRetriever
 #server = mail.sky-data.cn
 #port = 995
-#username = yilong.ren@sky-data.cn
+#username = yilong.ren
 #password = xxx
 
 type = SimpleIMAPSSLRetriever
-server = mail.sky-data.cn
+server = mail.iluvatar.ai
 port = 993
-username = yilong.ren@sky-data.cn
+username = yilong.ren
 password = xxx
 
 # 不同服务器设置不同，可以通过在mutt查看原件的方式check
@@ -31,7 +31,7 @@ type = MDA_external
 path = /usr/bin/procmail
 arguments = ('-m', '~/.procmailrc', '-f', '%(sender)')
 user = renyl
-allow_root_commands = True
+allow_root_commands = true
 
 
 [option]

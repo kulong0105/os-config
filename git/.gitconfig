@@ -1,6 +1,6 @@
 [user]
 	name =  Yilong Ren
-	email = yilong.ren@sky-data.cn
+	email = yilong.ren@iluvatar.ai
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lg2 = log --color --graph --pretty=format:'%h %ad | %s%d [%an]' --abbrev-commit --date=short
@@ -27,11 +27,16 @@
 [diff]
 	renames = true
 [sendemail]
-	smtpserver = mail.sky-data.cn
-	smtpuser = yilong.ren@sky-data.cn
+	smtpserver = mail.iluvatar.ai
+	smtpuser = yilong.ren@iluvatar.ai
 	smtpencryption = tls
 	smtpserverport = 25
 	smtppass = xxx
-	to = yilong.ren@sky-data.cn
-	cc = team_ci@sky-data.cn
-	#cc = skyaxe@sky-data.cn
+	to = xiang.dai@iluvatar.ai
+	cc = team_ci@iluvatar.ai
+	cc = skyaxe@iluvatar.ai
+[pack]
+	windowMemory = 100m
+	SizeLimit = 100m
+	threads = 1
+	window = 0
