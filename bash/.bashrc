@@ -13,12 +13,29 @@ alias docker="sudo docker"
 alias v="vim"
 alias s="ssh"
 
+alias k="kubectl"
+alias kdes="kubectl describe"
+alias kpods="kubectl get pods -o wide"
+alias kpodns="kubectl get pods -o wide --all-namespaces"
+
+alias install="sudo yum install -y"
+alias sstatus="sudo systemctl status"
+alias sstart="sudo systemctl start"
+alias srestart="sudo systemctl restart"
+alias mem="free -h"
+alias disk="df -hT"
+
+alias mount="sudo mount"
+alias umount="sudo umount"
+alias iptables="sudo iptables"
+
 alias ll="ls -al"
 alias l="ls -al"
 alias lt="ll --full-time -t"
 alias df="df -hT"
 alias d="df -hT"
 alias p="python"
+alias pp="ipython"
 
 alias blog="bundle exec jekyll s"
 alias ..="cd .. && ls"
@@ -28,6 +45,7 @@ alias ....="cd ../../../ && ls"
 alias gg="git grep --color -n"
 alias gpr="git pull --rebase"
 alias gd="git d HEAD"
+alias gd2="git d"
 alias gri="git rebase -i HEAD~10"
 alias gs="git st"
 alias gl="git lg"
@@ -38,6 +56,7 @@ alias gpf="git push -f"
 alias gf="git format"
 alias gsm="git send-email"
 alias gm="git ci --amend"
+alias gw="git sw2"
 
 alias t="tmux"
 alias tl="tmux ls"
@@ -66,9 +85,6 @@ alias sc='sort | uniq -c | sort -nr | more'
 alias transc2e="trans zh-CN:en"
 alias transe2c="trans en:zh-CN"
 
-export PATH="/home/renyl/intel/intelpython3/bin/:$PATH"
-
-# eval $(thefuck --alias)
 
 # Avoid duplicates
 export HISTCONTROL=ignoredups:erasedups

@@ -1,25 +1,118 @@
 ServerAliveInterval 60
 TCPKeepAlive=yes
 
-Host yl
+#ControlMaster=auto
+#ControlPath=~/.ssh/%r@%h-%p 
+#ControlPersist=1h
+
+
+Host *
+	StrictHostKeyChecking no
+	UserKnownHostsFile=/dev/null
+
+Host license
+    User root
+    HostName 10.150.0.118 
+
+Host imis-old
+    User root
+    HostName 10.150.0.170
+
+Host imis
+    User root
+    HostName 10.150.0.107
+
+Host imis-dev
+    User root
+    HostName 10.150.0.94
+
+Host test
+    User root
+    HostName  192.168.50.221
+
+Host build
+    User root
+    HostName 10.101.1.112
+
+Host 130
+    User root
+    HostName 10.115.1.130
+
+Host 240
 	User root
-	HostName 192.168.124.240
+	HostName 192.168.50.110
 
-Host cy
-	User yancy
-	HostName 192.168.50.92
+Host 250
+	User skyaxe-admin
+	HostName 192.168.50.60
 
-Host yh
-	User guyanhua
-	HostName 192.168.50.41
+Host k8s
+    User root
+    HostName 10.0.2.92
+
+Host repo
+	User root
+	HostName 192.168.20.27
+
+Host jira
+	User root
+	HostName 192.168.20.20
+
+Host jks
+	User root
+	HostName 192.168.20.28
+
+Host dns
+	User root
+	HostName 192.168.20.17
 
 Host nfs
 	User root
 	HostName 192.168.20.11
 
+Host nfs2
+	User root
+	HostName 192.168.20.111
+
 Host git
 	User root
 	HostName 192.168.20.14
+
+Host dockerhub
+	User root
+	HostName 192.168.20.38
+
+Host 21
+	User root
+	HostName 10.0.2.21
+
+Host 22
+	User root
+	HostName 10.0.2.22
+
+Host 23
+	User root
+	HostName 10.0.2.23
+
+Host 24
+	User root
+	HostName 10.0.2.24
+
+Host 25
+	User root
+	HostName 10.0.2.25
+
+Host 26
+	User root
+	HostName 10.0.2.26
+
+Host 27
+	User root
+	HostName 10.0.2.27
+
+Host xug
+    User root
+    HostName 10.115.0.227
 
 Host inn-forward
 	User renyl

@@ -1,0 +1,55 @@
+#!/usr/bin/expect -f 
+
+set timeout 10
+
+proc my_help { program_name } {
+
+	send_user "Parameter is wrong.\n"
+	send_user "Usage: $program_name < build | code | code_root >\n"
+	send_user "Try it again.\n"
+	exit
+
+}
+
+if { $argc != 1 } {
+	
+	my_help $argv0
+}
+
+set OPT  [lrange $argv  0 0]
+
+spawn ssh $OPT
+if { "$OPT" == "code_root" } {
+	expect {
+		"yes" { send "yes \n"; exp_continue }
+		"password" { send "zcx_2011\n"; exp_continue }
+		"eof" { send_user "Login OK\n" }
+	}
+} elseif { "$OPT" == "build_root" } {
+	expect {
+		"yes" { send "yes \n"; exp_continue }
+		"password" { send "zcx_2011\n"; }
+		"eof" { send_user "Login OK\n" }
+	} 
+} elseif { "$OPT" == "nfs_root" } {
+	expect {
+		"yes" { send "yes \n"; exp_continue }
+		"password" { send "zcx_2011\n"; }
+		"eof" { send_user "Login OK\n" }
+	} 
+} elseif { "$OPT" == "build2_root" } {
+	expect {
+		"yes" { send "yes \n"; exp_continue }
+		"password" { send "rootroot\n"; }
+		"eof" { send_user "Login OK\n" }
+	} 
+} else {
+		expect {
+		"yes" { send "yes \n"; exp_continue }
+		"password" { send "Kulong520\n"; }
+		"eof" { send_user "Login OK\n" }
+	}
+}
+
+interact
+

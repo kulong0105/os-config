@@ -5,7 +5,6 @@
 #set hidden_host        # 隐藏 host 细节
 #
 
-
 #
 # 信箱设置
 #
@@ -65,17 +64,16 @@ set signature = "~/.mutt.signature"
 #
 #macro index P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
 #macro pager P "!getmail -n -r ~/.getmail/getmailrc_skydata -r ~/.getmail/getmailrc_sina -r ~/.getmail/getmailrc_163 \r"
-
 macro index P "!getmail -n -r ~/.getmail/getmailrc_iluvatar \r"
 
-macro index,pager B "<pipe-entry>(cd /home/renyl/repo/skycompute; umask 022; git am -s)"
-macro index,pager C "<pipe-entry>(cd /home/renyl/repo/skycompute-enterprise; umask 022; git am -s)"
-macro index,pager D "<pipe-entry>(cd /home/renyl/repo/skycompute-benchmark; umask 022; git am -s)"
-macro index,pager E "<pipe-entry>(cd /home/renyl/repo/skydiscovery-benchmark; umask 022; git am -s)"
 
-macro index,pager K "<pipe-entry>(cd /home/renyl/repo/skydiscovery-deploy; umask 022; git am -s)"
-macro index,pager L "<pipe-entry>(cd /home/renyl/repo/cobbler-docker; umask 022; git am -s)"
-#macro index,pager L "<pipe-entry>(cd /home/renyl/repo/packstack-config; umask 022; git am -s)"
+macro index,pager U "<pipe-entry>(cd /home/renyl/repo/sdx/user-manager; umask 022; git am -s)"
+macro index,pager A "<pipe-entry>(cd /home/renyl/repo/sdx/storage-manager; umask 022; git am -s)"
+macro index,pager B "<pipe-entry>(cd /home/renyl/repo/sdx/file-manager; umask 022; git am -s)"
+macro index,pager M "<pipe-entry>(cd /home/renyl/repo/sdx/system-manager; umask 022; git am -s)"
+
+macro index,pager K "<pipe-entry>(cd /home/renyl/repo/sdx/auto-deploy; umask 022; git am -s --reject)"
+macro index,pager L "<pipe-entry>(cd /home/renyl/repo/sdx/base-image; umask 022; git am -s)"
 
 # 设置app浏览附件
 set mailcap_path ="~/.mailcap"
@@ -88,7 +86,8 @@ set mailcap_path ="~/.mailcap"
 #set index_format = "| %4C | %Z | %{ %b %d } | %-15.15F %-15.15L | (%?l?%4l&%4c?:%X) | %s"
 #set folder_format = "| %2C | %t %N | %8s | %d | %f"
 
-set index_format = "| %4C | %Z | %{ %b %d } | %-15.15f %-15.15t | (%?l?%4l&%4c?:%X) | %s"
+#set index_format = "| %4C | %Z | %{%Y %b %d } | %-15.15f %-15.15t | (%?l?%4l&%4c?:%X) | %s"
+set index_format = "| %4C | %Z | %{%Y %b %d } | %-25.25f %-25.25t | (%?l?%4l&%4c?:%X) | %s"
 set folder_format = "| %2C | %8s | %d | %f"
 
 #Flag
@@ -142,11 +141,11 @@ set pager_stop
 # 自动显示html
 auto_view text/html
 # 告知mutt订阅的邮件列表,以便开启相关特性,便于阅读邮件列表
-set sort = reverse-threads
-set sort_browser = reverse-date
+#set sort = reverse-threads
+#set sort_browser = reverse-date
 
-#set sort = threads
-#set sort_aux = reverse-last-date-received
+set sort = threads
+set sort_aux = reverse-last-date-received
 
 
 subscribe linux-kernel@vger.kernel.org

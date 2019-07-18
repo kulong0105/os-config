@@ -27,16 +27,32 @@
 [diff]
 	renames = true
 [sendemail]
-	smtpserver = mail.iluvatar.ai
-	smtpuser = yilong.ren@iluvatar.ai
-	smtpencryption = tls
-	smtpserverport = 25
-	smtppass = xxx
-	to = xiang.dai@iluvatar.ai
-	cc = team_ci@iluvatar.ai
-	cc = skyaxe@iluvatar.ai
+    smtpserver = smtp.iluvatar.ai
+    from = Yilong Ren <yilong.ren@iluvatar.ai>
+    chairnreplyto = false
+    smtpserverport = 25
+    envelope-sender = yilong.ren@iluvatar.ai
+    to = yilong.ren@iluvatar.ai
+    cc = team_si@iluvatar.ai
+
+
+#	smtpserver = smtp.iluvatar.ai
+#	smtpuser = yilong.ren@iluvatar.ai
+#	smtpencryption = tls
+#	smtpserverport = 25
+#	smtppass = xxx
+#	to = yilong.ren@iluvatar.ai
+#	cc = team_ci@iluvatar.ai
+#	cc = skyaxe@iluvatar.ai
 [pack]
 	windowMemory = 100m
 	SizeLimit = 100m
 	threads = 1
 	window = 0
+[url "git@git.sky-data.cn:"]
+	insteadOf = https://git.sky-data.cn/
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
