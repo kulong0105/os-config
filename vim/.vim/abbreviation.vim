@@ -1,11 +1,8 @@
-abbr repby Reported-by: Gu Yanhua <yanhua.gu@sky-data.cn>
-abbr rby Reviewed-by: Gu Yanhua <yanhua.gu@sky-data.cn>
-abbr sby Suggested-by: Gu Yanhua <yanhua.gu@sky-data.cn>
-abbr ccy Cc: Gu Yanhua <yanhua.gu@sky-data.cn>
-
-abbr repbw Reported-by: Liu Weijia <weijia.liu@sky-data.cn>
-abbr rbw Reviewed-by: Liu Weijia <weijia.liu@sky-data.cn>
-abbr sbw Suggested-by: Liu Weijia <weijia.liu@sky-data.cn>
-abbr ccw Cc: Liu Weijia <weijia.liu@sky-data.cn>
+abbr repby Reported-by: Yilong Ren <yilong.ren@iluvatar.ai>
+abbr rby Reviewed-by: Yilong Ren <yilong.ren@iluvatar.ai>
+abbr sby Suggested-by: Yilong Ren <yilong.ren@iluvatar.ai>
+abbr tby Tested-by: Yilong Ren <yilong.ren@iluvatar.ai>
+abbr aby Acked-by: Yilong Ren <yilong.ren@iluvatar.ai>
+abbr ccy Cc: Yilong Ren <yilong.ren@iluvatar.ai>
 
 abbr ap applied
