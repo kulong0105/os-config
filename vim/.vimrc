@@ -71,10 +71,15 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
+Plug 'Chiel92/vim-autoformat'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'              "different color for parens
+
 Plug 'easymotion/vim-easymotion'        "fast move
+Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch-easymotion.vim'
+
 Plug 'Raimondi/delimitMate'             "auto-completion for quotes / parens / brackets
 Plug 'tpope/vim-commentary'             "easy comments/uncomments
 "Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['json', 'python', 'markdown', 'yaml']} "auto format
@@ -103,6 +108,9 @@ call plug#end()
 let mapleader="\<Space>"
 
 
+" vim-autoformat'
+nmap rm :RemoveTrailingSpaces<CR>
+
 " rainbow (彩虹括号)
 let g:rainbow_active=1
 let g:rainbow_conf = {
@@ -127,6 +135,35 @@ let g:rainbow_conf = {
 \		'css': 0,
 \	}
 \}
+
+
+" vim-easymotion setting
+map <Leader> <Plug>(easymotion-prefix)
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+" You can use other keymappings like <C-l> instead of <CR> if you want to
+" use these mappings as default search and sometimes want to move cursor with
+" EasyMotion.
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {
+  \     "\<CR>": '<Over>(easymotion)'
+  \   },
+  \   'is_expr': 0
+  \ }), get(a:, 1, {}))
+endfunction
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
 
 " taglist setting
@@ -195,7 +232,7 @@ let g:syntastic_quiet_messages = { 'regex': ['trailing-newlines', 'invalid-name'
 let g:jedi#completions_enabled = 0
 
 
-" vim-flake8
+" vim-flake8 setting
 nmap ck :call flake8#Flake8()<CR>
 " let g:flake8_quickfix_height=5
 " auto check every time when file is changed
