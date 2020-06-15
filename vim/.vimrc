@@ -82,7 +82,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 
 Plug 'Raimondi/delimitMate'             "auto-completion for quotes / parens / brackets
 Plug 'tpope/vim-commentary'             "easy comments/uncomments
-"Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['json', 'python', 'markdown', 'yaml']} "auto format
+"""Plug 'prettier/vim-prettier', {'do': 'yarn install', 'for': ['json', 'python', 'markdown', 'yaml']} "auto format
 
 
 Plug 'vim-scripts/taglist.vim'
@@ -99,6 +99,8 @@ Plug 'vim-python/python-syntax'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 Plug 'davidhalter/jedi-vim'
+
+Plug 'majutsushi/tagbar'
 
 Plug 'SpaceVim/SpaceVim'
 call plug#end()
@@ -169,7 +171,7 @@ noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 " taglist setting
 let Tlist_Show_One_File=1           "不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow=1         "如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Ctags_Cmd="/usr/bin/ctags"  "将taglist与ctags关联
+let Tlist_Ctags_Cmd="/usr/local/bin/ctags"  "将taglist与ctags关联
 nmap tl :TlistToggle<CR>
 
 
@@ -205,8 +207,9 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion=1
-map <c-]>  :YcmCompleter GoToDefinition<CR>
+map <c-p>  :YcmCompleter GoToDefinition<CR>
 
 
 " syntastic setting
@@ -237,4 +240,36 @@ nmap ck :call flake8#Flake8()<CR>
 " let g:flake8_quickfix_height=5
 " auto check every time when file is changed
 " autocmd BufWritePost *.py call flake8#Flake8()
+
+" tagbar setting: https://github.com/jstemmer/gotags
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
+
+let g:tagbar_left = 1
+nmap <F8> :TagbarToggle<CR>
 
