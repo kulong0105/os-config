@@ -112,4 +112,6 @@ export LS_OPTIONS='--color=auto'
 export CLICOLOR='Yes'
 export LSCOLORS='ExfxcxdxbxegedabagGxGx'
 
-export PATH="$PATH:/Users/yilong/Yilong/miniconda3/bin"
+alias ls="ls --color=auto"
+export PATH="/usr/local/opt/go/bin/:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/Cellar/python/3.7.4/bin:~/.local:$PATH"
+
